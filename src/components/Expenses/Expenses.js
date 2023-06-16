@@ -14,18 +14,22 @@ const Expenses = (props) => {
     setFilteredYear(selectedYear); // 設定新的狀態以顯示選取的年份
   };
 
+  const filteredExpenses = props.items.filter(expense => {
+    return expense.date.getFullYear().toString()  === filteredYear;
+  });
+
   return (
     <Card className="expenses">
       <ExpensesFilter
         selected={filteredYear}
         onFilterChange={saveFliterChangeHandler}
       />
-      {props.items.map((expense) => (
-        <ExpenseItem 
-        key={expense.id}
-        title={expense.title} 
-        amount={expense.amount}
-        date={expense.date}
+      {filteredExpenses.map((expense) => (
+        <ExpenseItem
+          key={expense.id}
+          title={expense.title}
+          amount={expense.amount}
+          date={expense.date}
         />
       ))}
     </Card>
