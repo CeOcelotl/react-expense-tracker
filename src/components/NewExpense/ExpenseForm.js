@@ -43,7 +43,7 @@ const ExpenseForm = (props)=>{
         
         const expenseDate = {
             title: enteredTitle,
-            amount: enteredAmount,
+            amount: +enteredAmount,
             date: new Date(enteredDate)
         }
         // console.log(expenseDate);//可以看到使用者輸入的內容
